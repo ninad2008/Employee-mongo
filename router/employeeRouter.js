@@ -4,9 +4,9 @@ const Employee=require("../models/Employee");
 
 const router=express.Router();
 
-router.get("/",(request,response)=>{
+router.get("/", async (request,response)=>{
     try{
-       const employees=Employee.find({});
+       const employees= await Employee.find({});
        response.status(200).json(employees);
     }catch(error){
        response.status(500).json({message:error.message});
